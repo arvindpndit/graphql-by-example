@@ -1,36 +1,19 @@
 import express from "express";
 import cors from "cors";
 import { ApolloServer } from "@apollo/server";
-
 import { expressMiddleware } from "@apollo/server/express4";
+import fs from "fs";
+import path from "path";
+import Query from "./resolver/resovler.js";
 
 const app = express();
 app.use(cors(), express.json());
 
-//this is for the client
-const typeDefs = `
-  type Query {
-    hello: String
-    say(name: String): String
-    sum(a: Int!, b: Int!): Int!
-  }`;
+// Read the contents of schema.graphql -> typeDefs
+const schemaPath = path.join("./schema/schema.graphql");
 
-//what to do for your query
-const resolvers = {
-  Query: {
-    hello: () => {
-      return "Hey, I am a GraphQL server";
-    },
-
-    say: (_, { name }) => {
-      return `Hey ${name}! I am a GraphQL server`;
-    },
-
-    sum: (_, { a, b }) => {
-      return a + b;
-    },
-  },
-};
+const typeDefs = fs.readFileSync(schemaPath, "utf8");
+const resolvers = Query;
 
 const initServer = async () => {
   const server = new ApolloServer({
