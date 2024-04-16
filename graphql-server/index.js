@@ -5,6 +5,8 @@ import { expressMiddleware } from "@apollo/server/express4";
 import fs from "fs";
 import path from "path";
 import Query from "./resolver/resovler.js";
+import connectToDb from "./db/connect.js";
+import Post from "./db/models/posts-model.js";
 
 const app = express();
 app.use(cors(), express.json());
@@ -24,6 +26,11 @@ const initServer = async () => {
   await server.start();
   app.use("/graphql", expressMiddleware(server));
   app.listen(8000, () => console.log(`app is running on port 8000`));
+
+  connectToDb();
+
+  // const post = await Post.find();
+  // console.log(post);
 };
 
 initServer();
