@@ -1,12 +1,19 @@
 type Query {
-  posts: [Post]
+  posts: [Posts]
 }
 
-type Post {
+type Posts {
   id: ID!
   title: String!
   description: String
   likes: Int
   comments: Int
   views: Int
+  user: User
+}
+
+type User {
+  id: ID!
+  name: String!
+  followers: Int
 }
