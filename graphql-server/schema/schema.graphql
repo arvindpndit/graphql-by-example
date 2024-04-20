@@ -1,4 +1,5 @@
 type Query {
+  post(id: ID!): Posts
   posts: [Posts]
 }
 

@@ -3,6 +3,16 @@ import Post from "../db/models/posts-model.js";
 import User from "../db/models/users-model.js";
 
 export const Query = {
+  post: async (root, { id }) => {
+    try {
+      connectToDb();
+      const post = await Post.findById(id);
+      return post;
+    } catch (error) {
+      throw new Error("Error fetching post", error);
+    }
+  },
+
   posts: async () => {
     try {
       connectToDb();
