@@ -1,27 +1,14 @@
-import { useQuery, gql } from "@apollo/client";
+import React from "react";
+import MainContainer from "./components/MainContainer";
+import Navbar from "./components/Navbar";
 
-const GET_DATA = gql`
-  query {
-    posts {
-      title
-    }
-  }
-`;
-
-function App() {
-  const { loading, error, data } = useQuery(GET_DATA);
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error --- </p>;
-
+const App = () => {
   return (
-    <>
-      <h2>All Posts</h2>
-      {data.posts.map((post) => {
-        return <div>{post.title}</div>;
-      })}
-    </>
+    <div className="container mx-auto">
+      <Navbar />
+      <MainContainer />
+    </div>
   );
-}
+};
 
 export default App;
