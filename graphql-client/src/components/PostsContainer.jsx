@@ -5,6 +5,7 @@ const GET_DATA = gql`
   query {
     posts {
       title
+      id
     }
   }
 `;
@@ -21,7 +22,7 @@ function PostsContainer() {
       {data.posts.map((post) => {
         return (
           <div className="p-2 hover:bg-gray-300 hover:cursor-pointerborder text-xl">
-            <Link to={"/post"}>
+            <Link to={`/post/${post.id}`}>
               <div>{post.title}</div>
             </Link>
           </div>
