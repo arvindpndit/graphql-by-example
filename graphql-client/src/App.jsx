@@ -1,4 +1,3 @@
-import "./App.css";
 import { useQuery, gql } from "@apollo/client";
 
 const GET_DATA = gql`
