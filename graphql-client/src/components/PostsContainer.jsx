@@ -1,4 +1,5 @@
 import { useQuery, gql } from "@apollo/client";
+import { Link } from "react-router-dom";
 
 const GET_DATA = gql`
   query {
@@ -19,8 +20,10 @@ function PostsContainer() {
       <h2 className="text-3xl p-2">All Posts</h2>
       {data.posts.map((post) => {
         return (
-          <div className="p-2 hover:bg-gray-300 hover:cursor-pointer border text-xl">
-            <div>{post.title}</div>
+          <div className="p-2 hover:bg-gray-300 hover:cursor-pointerborder text-xl">
+            <Link to={"/post"}>
+              <div>{post.title}</div>
+            </Link>
           </div>
         );
       })}

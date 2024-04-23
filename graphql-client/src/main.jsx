@@ -4,11 +4,31 @@ import App from "./App.jsx";
 import "./index.css";
 import { ApolloProvider } from "@apollo/client";
 import client from "../config/server.js";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import MainContainer from "./components/MainContainer.jsx";
+import PostDetailPage from "./components/PostDetailPage.jsx";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <MainContainer />,
+      },
+      {
+        path: "/post",
+        element: <PostDetailPage />,
+      },
+    ],
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <App />
+      <RouterProvider router={router} />
     </ApolloProvider>
   </React.StrictMode>
 );

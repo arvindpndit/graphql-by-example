@@ -1,12 +1,12 @@
 import React from "react";
-import MainContainer from "./components/MainContainer";
 import Navbar from "./components/Navbar";
+import { Outlet } from "react-router-dom";
 
 const App = () => {
   return (
     <div className="container mx-auto">
       <Navbar />
-      <MainContainer />
+      <Outlet />
     </div>
   );
 };
