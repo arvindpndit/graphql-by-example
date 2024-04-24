@@ -11,6 +11,7 @@ const GET_DATA = gql`
       views
       user {
         name
+        id
       }
     }
   }
@@ -30,7 +31,7 @@ const PostDetailPage = () => {
     description,
     likes,
     comments,
-    user: { name },
+    user: { name, id: userId },
   } = data?.post;
 
   return (
@@ -40,7 +41,7 @@ const PostDetailPage = () => {
       <div className="flex gap-5">
         <div>👍 {likes}</div>
         <div>💬 {comments}</div>
-        <Link to={`/user/${id}`}>
+        <Link to={`/user/${userId}`}>
           <div className="hover:bg-gray-500 hover:text-white "> 😎 {name}</div>
         </Link>
       </div>
