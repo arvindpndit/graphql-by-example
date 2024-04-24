@@ -1,5 +1,5 @@
 import { useQuery, gql } from "@apollo/client";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const GET_DATA = gql`
   query Post($postId: ID!) {
@@ -40,7 +40,9 @@ const PostDetailPage = () => {
       <div className="flex gap-5">
         <div>👍 {likes}</div>
         <div>💬 {comments}</div>
-        <div>😎 {name}</div>
+        <Link to={`/user/${id}`}>
+          <div className="hover:bg-gray-500 hover:text-white "> 😎 {name}</div>
+        </Link>
       </div>
     </div>
   );
