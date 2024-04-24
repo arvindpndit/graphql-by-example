@@ -22,6 +22,18 @@ export const Query = {
       throw new Error("Error fetching posts:", error);
     }
   },
+  user: async (root, { id }) => {
+    try {
+      connectToDb();
+      console.log(id);
+      console.log("here1");
+      const user = await User.findById(id);
+      console.log("here");
+      return user;
+    } catch (error) {
+      throw new Error("Error fetching user:", error);
+    }
+  },
 };
 
 export const Posts = {
