@@ -10,6 +10,6 @@ const postSchema = new Schema({
 });
 
 // 3. Create a Model.
-const Post = model("Post", postSchema);
+const PostModel = model("Post", postSchema);
 
-export default Post;
+export default PostModel;

@@ -6,6 +6,6 @@ const userSchema = new Schema({
 });
 
 // 3. Create a Model.
-const User = model("User", userSchema);
+const UserModel = model("User", userSchema);
 
-export default User;
+export default UserModel;
