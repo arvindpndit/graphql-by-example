@@ -7,6 +7,10 @@ const GET_DATA = gql`
       followers
       id
       name
+      posts {
+        title
+        id
+      }
     }
   }
 `;
@@ -20,12 +24,25 @@ const UserInfoPage = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error --- </p>;
 
-  const { name, followers } = data?.user;
+  const { name, followers, posts } = data?.user;
 
   return (
     <div className=" p-2">
       <div className="mt-20 text-3xl">😎 {name} </div>
       <div className="">followers - {followers} </div>
+
+      {/* user's posts */}
+      <div className="mt-16">
+        {posts.map((post) => {
+          return (
+            <div className="p-2 hover:bg-gray-300 hover:cursor-pointerborder text-xl">
+              <Link to={`/post/${post.id}`}>
+                <div>{post.title}</div>
+              </Link>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

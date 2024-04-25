@@ -8,7 +8,13 @@ const Navbar = () => {
         <Link to={"/"} className="hover:bg-slate-200 p-2 hover:cursor-pointer">
           Home
         </Link>
-        <div className="hover:bg-slate-200 p-2 hover:cursor-pointer">Login</div>
+        {/* <div className="hover:bg-slate-200 p-2 hover:cursor-pointer">Login</div> */}
+        <Link
+          to={"/post"}
+          className="hover:bg-slate-200 p-2 hover:cursor-pointer"
+        >
+          Post Something
+        </Link>
       </div>
     </div>
   );

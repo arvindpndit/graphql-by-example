@@ -8,6 +8,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainContainer from "./components/MainContainer.jsx";
 import PostDetailPage from "./components/PostDetailPage.jsx";
 import UserInfoPage from "./components/UserInfoPage.jsx";
+import PostSomething from "./components/PostSomething.jsx";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "/user/:id",
         element: <UserInfoPage />,
+      },
+      {
+        path: "/post",
+        element: <PostSomething />,
       },
     ],
   },
