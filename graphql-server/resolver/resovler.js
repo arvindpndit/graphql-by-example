@@ -1,6 +1,7 @@
 import connectToDb from "../db/connect.js";
 import PostModel from "../db/models/posts-model.js";
 import UserModel from "../db/models/users-model.js";
+import { ObjectId } from "mongodb";
 
 export const Query = {
   post: async (root, { id }) => {
@@ -33,7 +34,7 @@ export const Query = {
   },
 };
 
-export const Posts = {
+export const Post = {
   user: async (post) => {
     try {
       connectToDb();
@@ -55,6 +56,24 @@ export const User = {
       return posts;
     } catch (error) {
       throw new Error("Error fetching posts:", error);
+    }
+  },
+};
+
+export const Mutation = {
+  addPost: async (root, { title, description, userId }) => {
+    try {
+      connectToDb();
+      const post = await PostModel.create({
+        title: title,
+        description: description,
+        user: userId,
+      });
+      console.log(post);
+      return post;
+    } catch (error) {
+      console.log(error);
+      throw new Error("Error creating post:", error);
     }
   },
 };

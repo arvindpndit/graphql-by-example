@@ -4,7 +4,7 @@ import { ApolloServer } from "@apollo/server";
 import { expressMiddleware } from "@apollo/server/express4";
 import fs from "fs";
 import path from "path";
-import { Query, Posts, User } from "./resolver/resovler.js";
+import { Query, Post, User, Mutation } from "./resolver/resovler.js";
 
 const app = express();
 app.use(cors(), express.json());
@@ -13,7 +13,7 @@ app.use(cors(), express.json());
 const schemaPath = path.join("./schema/schema.graphql");
 
 const typeDefs = fs.readFileSync(schemaPath, "utf8");
-const resolvers = { Query, Posts, User };
+const resolvers = { Query, Post, User, Mutation };
 
 const initServer = async () => {
   const server = new ApolloServer({
