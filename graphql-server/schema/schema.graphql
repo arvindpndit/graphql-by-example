@@ -15,7 +15,7 @@ type Post {
 }
 
 type Mutation {
-  addPost(title: String, description: String, userId: ID): Post
+  addPost(input: AddPostInput): Post
 }
 
 type User {
@@ -23,4 +23,10 @@ type User {
   name: String!
   followers: Int
   posts: [Post]
+}
+
+input AddPostInput {
+  title: String
+  description: String
+  userId: ID
 }

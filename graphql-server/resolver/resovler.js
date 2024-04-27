@@ -61,7 +61,8 @@ export const User = {
 };
 
 export const Mutation = {
-  addPost: async (root, { title, description, userId }) => {
+  addPost: async (root, { input }) => {
+    const { title, description, userId } = input;
     try {
       connectToDb();
       const post = await PostModel.create({
