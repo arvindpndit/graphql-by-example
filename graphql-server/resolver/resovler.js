@@ -23,8 +23,9 @@ export const Query = {
       throw new Error("Error fetching posts:", error);
     }
   },
-  user: async (root, { id }) => {
+  user: async (root, { id }, contextValue) => {
     try {
+      console.log(contextValue.requestMethod);
       connectToDb();
       const user = await UserModel.findById(id);
       return user;

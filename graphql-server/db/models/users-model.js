@@ -3,6 +3,7 @@ import { Schema, model } from "mongoose";
 const userSchema = new Schema({
   name: { type: String },
   followers: { type: Number, default: 0 },
+  password: { type: String },
 });
 
 // 3. Create a Model.

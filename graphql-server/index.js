@@ -22,7 +22,14 @@ const initServer = async () => {
   });
 
   await server.start();
-  app.use("/graphql", expressMiddleware(server));
+  app.use(
+    "/graphql",
+    expressMiddleware(server, {
+      context: (req) => ({
+        requestMethod: req.req.method,
+      }),
+    })
+  );
   app.listen(8000, () => console.log(`app is running on port 8000`));
 };
 

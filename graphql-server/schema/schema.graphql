@@ -21,6 +21,7 @@ type Mutation {
 type User {
   id: ID!
   name: String!
+  password: String!
   followers: Int
   posts: [Post]
 }
